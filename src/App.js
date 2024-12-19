@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Users from "./views/Users"
 
@@ -8,11 +8,15 @@ import Users from "./views/Users"
 const App = () => {
   const [counter, setCounter] = useState(0);
 
+  useEffect(() => {
+    setCounter(100)
+  }, []);
+
   return (
     <div className="App">
-      <button onClick={() => setCounter(-5)}>-</button>
+      <button onClick={() => setCounter((prevCounter)=> prevCounter - 1)}>-</button>
       <h1>{counter}</h1>
-      <button>+</button>
+      <button onClick={() => setCounter((prevCounter)=> prevCounter + 1)}>+</button>
     </div>
   );
 }
